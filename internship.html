@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Internships - MNC Sample</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin:0; font-family: Arial, Helvetica, sans-serif; background:#f2f4f8; color:#222;
+    }
+    header {
+      background:#1f2937; color:#fff; padding:18px 12px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    header h1 { margin:0; font-size:20px; }
+    .back-btn {
+      padding:8px 14px;
+      background:#28a745;
+      color:#fff;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:14px;
+    }
+    .back-btn:hover { background:#1e7e34; }
+
+    .container { max-width:1100px; margin:20px auto; padding:0 12px; }
+    .controls { display:flex; gap:8px; margin-bottom:16px; align-items:center; flex-wrap:wrap; }
+    .controls input, .controls select {
+      padding:10px 12px; border-radius:8px; border:1px solid #d1d5db; background:#fff;
+    }
+    .grid {
+      display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px;
+    }
+    .card {
+      background:#fff; padding:14px; border-radius:10px; box-shadow:0 6px 16px rgba(15,23,42,0.06);
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .company { font-weight:700; font-size:15px; color:#0f172a; }
+    .meta { color:#6b7280; font-size:13px; }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+    .tag { background:#eef2ff; color:#4338ca; padding:6px 8px; font-size:12px; border-radius:999px; }
+    .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .btn {
+      margin-top:auto; padding:10px 12px; border-radius:8px; border:none; cursor:pointer; background:#4338ca; color:#fff;
+    }
+    .btn.secondary { background:#e5e7eb; color:#111; }
+    /* modal */
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; z-index:999; }
+    .modal { background:#fff; width:min(720px,92%); max-height:86vh; overflow:auto; border-radius:10px; padding:18px; position:relative; }
+    .close { position:absolute; top:10px; right:10px; background:#eee; border:none; padding:6px 10px; border-radius:8px; cursor:pointer; }
+    footer { text-align:center; color:#6b7280; margin:26px 0 40px; }
+    @media (max-width:420px) { .controls { flex-direction:column; align-items:stretch; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Internships — Sample MNCs</h1>
+    <a href="courses.html" class="back-btn">⬅ Back to Courses</a>
+  </header>
+
+  <main class="container">
+    <div class="controls">
+      <input id="search" placeholder="Search by role, company or skill" />
+      <select id="filterLocation">
+        <option value="">All locations</option>
+        <option>Bangalore</option>
+        <option>Hyderabad</option>
+        <option>Chennai</option>
+        <option>Delhi</option>
+        <option>Pune</option>
+        <option>Remote</option>
+      </select>
+      <select id="filterType">
+        <option value="">Any type</option>
+        <option>Full-time</option>
+        <option>Part-time</option>
+        <option>Summer</option>
+      </select>
+      <button id="resetBtn" class="btn secondary">Reset</button>
+    </div>
+
+    <section class="grid" id="grid"></section>
+
+    <div id="empty" style="display:none;padding:24px;background:#fff;border-radius:10px;margin-top:16px;text-align:center;color:#6b7280">
+      No internships found for these filters.
+    </div>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="close" id="closeModal">Close</button>
+      <h2 id="m_role" style="margin-top:4px"></h2>
+      <div class="meta" id="m_company"></div>
+      <div style="height:10px"></div>
+      <div id="m_summary" class="meta"></div>
+      <hr style="margin:12px 0" />
+      <div><strong>Responsibilities</strong>
+        <ul id="m_responsibilities"></ul>
+      </div>
+      <div><strong>Requirements</strong>
+        <ul id="m_requirements"></ul>
+      </div>
+      <div style="margin-top:12px">
+        <button id="applyNow" class="btn">Apply (Demo)</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© <span id="yr"></span> — Demo Internships</footer>
+
+  <script>
+    // Sample data: 8 major MNC internships
+    const internships = [
+      { id:1, role:"Frontend Engineer Intern", company:"Google", location:"Bangalore", type:"Full-time",
+        stipend:35000, skills:["HTML","CSS","JS","React"], summary:"Work on UI components for Google Cloud Console.",
+        responsibilities:["Implement responsive UIs","Write unit tests","Optimize performance"],
+        requirements:["Strong JS fundamentals","Comfort with React","Good debugging skills"]
+      },
+      { id:2, role:"Data Science Intern", company:"Microsoft", location:"Hyderabad", type:"Full-time",
+        stipend:32000, skills:["Python","Pandas","ML"], summary:"Analyze telemetry and build ML models for product insights.",
+        responsibilities:["Data cleaning & EDA","Model prototyping","Prepare visualizations"],
+        requirements:["Python & SQL","Understanding of ML basics","Communication skills"]
+      },
+      { id:3, role:"Backend Developer Intern", company:"Amazon", location:"Chennai", type:"Full-time",
+        stipend:30000, skills:["Java","Spring","SQL"], summary:"Build and maintain microservices powering order flows.",
+        responsibilities:["Implement APIs","Write integration tests","Monitor endpoints"],
+        requirements:["Java experience","REST API knowledge","Familiarity with databases"]
+      },
+      { id:4, role:"iOS Engineer Intern", company:"Apple", location:"Bangalore", type:"Full-time",
+        stipend:40000, skills:["Swift","iOS","UI"], summary:"Help build features for Apple services on iOS.",
+        responsibilities:["Prototype iOS screens","Fix bugs","Write tests"],
+        requirements:["Swift basics","UIKit/SwiftUI knowledge","App lifecycle understanding"]
+      },
+      { id:5, role:"Product Design Intern", company:"Meta", location:"Remote", type:"Part-time",
+        stipend:22000, skills:["Figma","UX","Research"], summary:"Design social experiences and run quick user tests.",
+        responsibilities:["Wireframe flows","Prototype interactions","Conduct usability tests"],
+        requirements:["Portfolio with projects","Figma skills","User research mindset"]
+      },
+      { id:6, role:"AI Research Intern", company:"IBM", location:"Pune", type:"Summer",
+        stipend:25000, skills:["NLP","PyTorch","Research"], summary:"Work on applied NLP problems with research mentors.",
+        responsibilities:["Implement models","Write reports","Reproduce papers"],
+        requirements:["Understanding of ML","PyTorch experience","Good math foundation"]
+      },
+      { id:7, role:"Network Engineer Intern", company:"Cisco", location:"Delhi", type:"Full-time",
+        stipend:20000, skills:["Networking","Routing","Wireshark"], summary:"Assist with enterprise network deployments.",
+        responsibilities:["Configure routers/switches","Troubleshoot networks","Document setups"],
+        requirements:["Networking basics","Hands-on with networking tools","Problem solving"]
+      },
+      { id:8, role:"Hardware Validation Intern", company:"Intel", location:"Bangalore", type:"Full-time",
+        stipend:36000, skills:["C","Embedded","Testing"], summary:"Validate SoC features and run test benches.",
+        responsibilities:["Write test cases","Run bench tests","Log and debug failures"],
+        requirements:["C/Embedded knowledge","Scripting for automation","Attention to detail"]
+      }
+    ];
+
+    // Helpers
+    const grid = document.getElementById('grid');
+    const overlay = document.getElementById('overlay');
+    const m_role = document.getElementById('m_role');
+    const m_company = document.getElementById('m_company');
+    const m_summary = document.getElementById('m_summary');
+    const m_responsibilities = document.getElementById('m_responsibilities');
+    const m_requirements = document.getElementById('m_requirements');
+    const search = document.getElementById('search');
+    const filterLocation = document.getElementById('filterLocation');
+    const filterType = document.getElementById('filterType');
+    const resetBtn = document.getElementById('resetBtn');
+    const empty = document.getElementById('empty');
+
+    // Render cards
+    function render(list) {
+      grid.innerHTML = '';
+      if (!list.length) {
+        empty.style.display = 'block';
+        return;
+      } else empty.style.display = 'none';
+
+      list.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="company">${job.company}</div>
+          <div style="font-weight:600">${job.role}</div>
+          <div class="meta">${job.location} · ${job.type} · ₹${job.stipend.toLocaleString()}/mo</div>
+          <div class="tags">${job.skills.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
+          <div style="margin-top:8px" class="row">
+            <button class="btn" data-id="${job.id}">View details</button>
+            <button class="btn secondary" onclick="alert('Apply flow demo for ${job.role} at ${job.company}')">Apply</button>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    // Open modal
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-id]');
+      if (!btn) return;
+      const id = Number(btn.dataset.id);
+      const job = internships.find(x => x.id === id);
+      if (!job) return;
+      m_role.textContent = job.role;
+      m_company.textContent = `${job.company} · ${job.location} · ${job.type} · ₹${job.stipend.toLocaleString()}/mo`;
+      m_summary.textContent = job.summary;
+      m_responsibilities.innerHTML = job.responsibilities.map(r => `<li>${r}</li>`).join('');
+      m_requirements.innerHTML = job.requirements.map(r => `<li>${r}</li>`).join('');
+      overlay.style.display = 'flex';
+    });
+
+    // Close modal
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.style.display = 'none';
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=> overlay.style.display='none');
+
+    // Filtering
+    function applyFilters() {
+      const q = search.value.trim().toLowerCase();
+      const loc = filterLocation.value;
+      const type = filterType.value;
+      let list = internships.slice();
+      if (q) {
+        list = list.filter(it => (it.role+' '+it.company+' '+it.skills.join(' ')).toLowerCase().includes(q));
+      }
+      if (loc) list = list.filter(it => it.location === loc);
+      if (type) list = list.filter(it => it.type === type);
+      render(list);
+    }
+    search.addEventListener('input', applyFilters);
+    filterLocation.addEventListener('change', applyFilters);
+    filterType.addEventListener('change', applyFilters);
+    resetBtn.addEventListener('click', () => { search.value=''; filterLocation.value=''; filterType.value=''; applyFilters(); });
+
+    // Init
+    render(internships);
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    window.addEventListener('error', e => console.warn('Runtime error:', e.message));
+  </script>
+</body>
+</html>
