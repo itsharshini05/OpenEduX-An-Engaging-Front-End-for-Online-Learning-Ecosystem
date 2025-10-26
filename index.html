@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Learning Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f4f4f9, #e6ecf5);
+      color: #333;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .btn {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none; 
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .hero h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: #007bff;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .cta h2 {
+      margin-bottom: 20px;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      padding-top: 100px;
+    }
+    .modal-content {
+      background: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: left;
+    }
+    .close {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+      color: red;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Welcome to Stanley E-Learning Platform</h1>
+    <button class="btn" onclick="openModal('loginModal')">Login</button>
+    <button class="btn" onclick="openModal('signupModal')">Sign Up</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Learn Anytime, Anywhere 🚀</h2>
+    <p>Choose from hundreds of courses and start your journey today.</p>
+    <a href="courses.html" class="btn">Explore Courses</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="card">📚 <h3>Wide Range</h3><p>Explore AI, Data Science, Web Development & more.</p></div>
+    <div class="card">⏰ <h3>Flexible</h3><p>Learn at your own pace anytime, anywhere.</p></div>
+    <div class="card">🎓 <h3>Experts</h3><p>Courses taught by top industry professionals.</p></div>
+    <div class="card">⭐ <h3>Top Rated</h3><p>Trusted by thousands of learners worldwide.</p></div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Start Learning Today!</h2>
+    <button class="btn" onclick="openModal('signupModal')">Join Now</button>
+  </section>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label>Email ID:</label>
+        <input type="email" placeholder="Enter Email" required>
+        <label>Password:</label>
+        <input type="password" placeholder="Enter Password" required>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signupModal')">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <label>Phone Number:</label>
+        <input type="tel" placeholder="Enter Phone Number" required>
+        <label>Email ID:</label>
+        <input type="email" placeholder="Enter Email" required>
+        <label>Password:</label>
+        <input type="password" placeholder="Create Password" required>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+    window.onclick = function(event) {
+      let login = document.getElementById("loginModal");
+      let signup = document.getElementById("signupModal");
+      if (event.target === login) login.style.display = "none";
+      if (event.target === signup) signup.style.display = "none";
+    }
+  </script>
+</body>
+</html>
