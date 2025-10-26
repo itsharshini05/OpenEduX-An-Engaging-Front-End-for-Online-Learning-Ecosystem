@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - E-Learning Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background: #007bff;
+      color: white;
+      padding: 15px 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .btn-progress { background: #28a745; }
+    .btn-internship { background: #ff9800; }
+    .courses {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .course-card {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      color: white;
+    }
+    .course-card h2 { margin-top: 0; }
+    .course-card ul { padding-left: 20px; }
+    .rating { color: yellow; font-size: 18px; }
+    .review { font-style: italic; color: #fff8dc; }
+    .enroll-btn {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .enroll-btn:hover { background: rgba(0,0,0,0.9); }
+
+    /* 🎨 Different colors for each course */
+    .ai { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+    .ml { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .ds { background: linear-gradient(135deg, #ff6a00, #ee0979); }
+    .cyber { background: linear-gradient(135deg, #232526, #414345); }
+    .hacking { background: linear-gradient(135deg, #0f2027, #2c5364); }
+    .fullstack { background: linear-gradient(135deg, #36d1dc, #5b86e5); }
+    .java { background: linear-gradient(135deg, #f7971e, #ffd200); color: #333; }
+    .python { background: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59); }
+    .os { background: linear-gradient(135deg, #ff512f, #dd2476); }
+    .mysql { background: linear-gradient(135deg, #396afc, #2948ff); }
+    .dccn { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .cprog { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="text-align:center;">Stanley Courses</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="courses.html">📚 Courses</a>
+      <a href="progress.html" class="btn-progress">📊 Progress</a>
+      <a href="internship.html" class="btn-internship">💼 Internships</a>
+    </nav>
+  </header>
+
+  <section class="courses">
+    <div class="course-card ai">
+      <h2>Artificial Intelligence</h2>
+      <p><b>Fee:</b> ₹3,000</p>
+      <p><b>Duration:</b> 10 weeks</p>
+      <p><b>Description:</b> Learn the fundamentals of AI including problem-solving, search techniques, and intelligent systems.</p>
+      <p><b>Instructor:</b> Dr. John Smith</p>
+      <ul>
+        <li>AI concepts and applications</li>
+        <li>Search algorithms</li>
+        <li>Neural networks</li>
+        <li>Real-world AI projects</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐☆ (4.5/5)</p>
+      <p class="review">"Very comprehensive and practical course!"</p>
+      <button class="enroll-btn" onclick="enroll('Artificial Intelligence')">Enroll Now</button>
+    </div>
+
+    <div class="course-card ml">
+      <h2>Machine Learning</h2>
+      <p><b>Fee:</b> ₹3,000</p>
+      <p><b>Duration:</b> 12 weeks</p>
+      <p><b>Description:</b> Hands-on training in supervised, unsupervised, and reinforcement learning techniques.</p>
+      <p><b>Instructor:</b> Prof. Emily Johnson</p>
+      <ul>
+        <li>Data preprocessing</li>
+        <li>Regression & Classification</li>
+        <li>Clustering & Dimensionality Reduction</li>
+        <li>Model evaluation</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (5/5)</p>
+      <p class="review">"A must for anyone serious about ML!"</p>
+      <button class="enroll-btn" onclick="enroll('Machine Learning')">Enroll Now</button>
+    </div>
+
+    <div class="course-card ds">
+      <h2>Data Science</h2>
+      <p><b>Fee:</b> ₹2,000</p>
+      <p><b>Duration:</b> 10 weeks</p>
+      <p><b>Description:</b> Master data analysis, visualization, and statistical modeling.</p>
+      <p><b>Instructor:</b> Dr. Robert Lee</p>
+      <ul>
+        <li>Data wrangling</li>
+        <li>Exploratory data analysis</li>
+        <li>Machine learning basics</li>
+        <li>Data visualization</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐☆ (4.3/5)</p>
+      <p class="review">"Great mix of theory and practice."</p>
+      <button class="enroll-btn" onclick="enroll('Data Science')">Enroll Now</button>
+    </div>
+
+    <div class="course-card cyber">
+      <h2>Cyber Security</h2>
+      <p><b>Fee:</b> ₹2,000</p>
+      <p><b>Duration:</b> 8 weeks</p>
+      <p><b>Description:</b> Learn to protect systems, networks, and programs from digital attacks.</p>
+      <p><b>Instructor:</b> Sarah Brown</p>
+      <ul>
+        <li>Network security</li>
+        <li>Encryption techniques</li>
+        <li>Threat analysis</li>
+        <li>Incident response</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (5/5)</p>
+      <p class="review">"Essential for IT professionals."</p>
+      <button class="enroll-btn" onclick="enroll('Cyber Security')">Enroll Now</button>
+    </div>
+
+    <div class="course-card hacking">
+      <h2>Ethical Hacking</h2>
+      <p><b>Fee:</b> ₹2,000</p>
+      <p><b>Duration:</b> 6 weeks</p>
+      <p><b>Description:</b> Learn penetration testing, vulnerability analysis, and security best practices.</p>
+      <p><b>Instructor:</b> Alex Turner</p>
+      <ul>
+        <li>Hacking methodologies</li>
+        <li>Exploiting vulnerabilities</li>
+        <li>Web application security</li>
+        <li>Defensive strategies</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐☆ (4.6/5)</p>
+      <p class="review">"Very hands-on and practical."</p>
+      <button class="enroll-btn" onclick="enroll('Ethical Hacking')">Enroll Now</button>
+    </div>
+
+    <div class="course-card fullstack">
+      <h2>Full Stack Web Development</h2>
+      <p><b>Fee:</b> ₹1,000</p>
+      <p><b>Duration:</b> 12 weeks</p>
+      <p><b>Description:</b> Become a full-stack web developer with HTML, CSS, JavaScript, React, and Node.js.</p>
+      <p><b>Instructor:</b> Michael Adams</p>
+      <ul>
+        <li>Frontend development (React)</li>
+        <li>Backend development (Node.js)</li>
+        <li>Database management</li>
+        <li>Deploying web apps</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (5/5)</p>
+      <p class="review">"Perfect course for career switchers."</p>
+      <button class="enroll-btn" onclick="enroll('Full Stack Web Development')">Enroll Now</button>
+    </div>
+
+    <div class="course-card java">
+      <h2>Java Programming</h2>
+      <p><b>Fee:</b> ₹800</p>
+      <p><b>Duration:</b> 8 weeks</p>
+      <p><b>Description:</b> Learn Java from basics to advanced OOP concepts.</p>
+      <p><b>Instructor:</b> David Wilson</p>
+      <ul>
+        <li>Core Java fundamentals</li>
+        <li>OOP principles</li>
+        <li>Exception handling</li>
+        <li>Collections & Multithreading</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐☆ (4.4/5)</p>
+      <p class="review">"Clear explanations and great projects."</p>
+      <button class="enroll-btn" onclick="enroll('Java')">Enroll Now</button>
+    </div>
+
+    <div class="course-card python">
+      <h2>Python Programming</h2>
+      <p><b>Fee:</b> ₹600</p>
+      <p><b>Duration:</b> 6 weeks</p>
+      <p><b>Description:</b> Learn Python programming for web, data science, and automation.</p>
+      <p><b>Instructor:</b> Anna Clark</p>
+      <ul>
+        <li>Python basics & syntax</li>
+        <li>Data structures</li>
+        <li>File handling</li>
+        <li>Mini projects</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (4.8/5)</p>
+      <p class="review">"Best beginner-friendly Python course!"</p>
+      <button class="enroll-btn" onclick="enroll('Python')">Enroll Now</button>
+    </div>
+
+    <div class="course-card os">
+      <h2>Operating System</h2>
+      <p><b>Fee:</b> ₹1,500</p>
+      <p><b>Duration:</b> 8 weeks</p>
+      <p><b>Description:</b> Understand OS concepts like process management, memory, and scheduling.</p>
+      <p><b>Instructor:</b> Dr. Neha Sharma</p>
+      <ul>
+        <li>Processes & Threads</li>
+        <li>Memory Management</li>
+        <li>File Systems</li>
+        <li>Scheduling Algorithms</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐ (4.2/5)</p>
+      <p class="review">"Very useful for system programmers."</p>
+      <button class="enroll-btn" onclick="enroll('Operating System')">Enroll Now</button>
+    </div>
+
+    <div class="course-card mysql">
+      <h2>MySQL Database</h2>
+      <p><b>Fee:</b> ₹1,200</p>
+      <p><b>Duration:</b> 6 weeks</p>
+      <p><b>Description:</b> Learn relational databases and SQL queries with MySQL.</p>
+      <p><b>Instructor:</b> Mr. Ramesh Patel</p>
+      <ul>
+        <li>Database design</li>
+        <li>SQL queries</li>
+        <li>Joins & Transactions</li>
+        <li>Stored Procedures</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (4.7/5)</p>
+      <p class="review">"Great for database beginners."</p>
+      <button class="enroll-btn" onclick="enroll('MySQL Database')">Enroll Now</button>
+    </div>
+
+    <div class="course-card dccn">
+      <h2>Data Communication & Computer Networks</h2>
+      <p><b>Fee:</b> ₹1,800</p>
+      <p><b>Duration:</b> 10 weeks</p>
+      <p><b>Description:</b> Learn networking fundamentals and data communication protocols.</p>
+      <p><b>Instructor:</b> Prof. Anil Kumar</p>
+      <ul>
+        <li>Network models</li>
+        <li>Transmission media</li>
+        <li>Routing algorithms</li>
+        <li>TCP/IP protocols</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐☆ (4.4/5)</p>
+      <p class="review">"Must course for networking students."</p>
+      <button class="enroll-btn" onclick="enroll('DCCN')">Enroll Now</button>
+    </div>
+
+    <div class="course-card cprog">
+      <h2>C Programming</h2>
+      <p><b>Fee:</b> ₹700</p>
+      <p><b>Duration:</b> 6 weeks</p>
+      <p><b>Description:</b> Learn fundamentals of C programming with practical examples.</p>
+      <p><b>Instructor:</b> Mr. Rajesh Gupta</p>
+      <ul>
+        <li>Data types & Operators</li>
+        <li>Control structures</li>
+        <li>Functions & Pointers</li>
+        <li>File handling</li>
+      </ul>
+      <p class="rating">⭐⭐⭐⭐⭐ (4.6/5)</p>
+      <p class="review">"Best for beginners in coding."</p>
+      <button class="enroll-btn" onclick="enroll('C Programming')">Enroll Now</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
