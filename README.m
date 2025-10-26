@@ -4,7 +4,25 @@ Name: T Harshini
 
 Description:OpenEduX is an interactive front-end platform developed to create an engaging online learning ecosystem. It allows students to explore and enroll in various courses, track their progress, and access internship opportunities relevant to their learning paths. The platform offers a clean, responsive interface that simplifies course navigation, progress monitoring, and performance analysis. Instructors can manage content, evaluate learners, and provide feedback seamlessly. OpenEduX promotes active participation and self-paced learning through visually appealing dashboards and real-time updates, making it an effective solution for enhancing the overall digital education experience and bridging the gap between learning and career growth.
 
-OUTPUT : 
+OUTPUT : <img width="1886" height="942" alt="Image" src="https://github.com/user-attachments/assets/2c2362df-8f2f-48d0-8a0f-5a67aa34b196" />
+
+<img width="1881" height="938" alt="Image" src="https://github.com/user-attachments/assets/fe26a750-0707-453f-be48-9ba6d8909357" />
+
+<img width="1876" height="937" alt="Image" src="https://github.com/user-attachments/assets/2a844cfd-bdc2-4ca1-8ac6-5b051f958e03" />
+
+<img width="1894" height="939" alt="Image" src="https://github.com/user-attachments/assets/ab6538d6-0041-4b1d-bc17-1a6821c27e37" />
+
+<img width="1906" height="941" alt="Image" src="https://github.com/user-attachments/assets/4887f90e-0766-4d8a-bb27-01b8f21008db" />
+
+<img width="1906" height="938" alt="Image" src="https://github.com/user-attachments/assets/8b6f6581-7866-43ee-b082-062573539fba" />
+
+<img width="1899" height="943" alt="Image" src="https://github.com/user-attachments/assets/e1829ec0-599a-4670-be70-8a4d288a832f" />
+
+<img width="1904" height="933" alt="Image" src="https://github.com/user-attachments/assets/e530d328-ed5c-4216-ad72-920ddc7d2f61" />
+
+<img width="1876" height="937" alt="Image" src="https://github.com/user-attachments/assets/6e036f77-cdb6-4e16-b45a-7385d58ca3c5" />
+
+<img width="1880" height="935" alt="Image" src="https://github.com/user-attachments/assets/51fcb26b-aa25-4eab-a7fd-39c06b39f9f0" />
 
 
 
