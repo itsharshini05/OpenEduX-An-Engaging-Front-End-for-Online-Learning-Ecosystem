@@ -1,0 +1,351 @@
+/* ========================================
+   GENERAL STYLES
+======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(120deg, #f0f4ff, #f9f9f9);
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+p {
+  margin: 8px 0;
+}
+
+/* ========================================
+   BUTTON STYLES
+======================================== */
+.btn {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #007bff, #00bfff);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #0056b3, #0099e6);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* ========================================
+   HEADER STYLES
+======================================== */
+header {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin-bottom: 12px;
+}
+
+header a {
+  color: white;
+  margin: 5px;
+  font-size: 14px;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   HERO SECTION (index.html)
+======================================== */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #e0f0ff, #ffffff);
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+/* ========================================
+   FEATURES CARDS (index.html)
+======================================== */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 40px 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #ffffff, #f0f8ff);
+  padding: 20px;
+  border-radius: 12px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  margin: 10px 0;
+  color: #007bff;
+}
+
+/* ========================================
+   CTA SECTION (index.html)
+======================================== */
+.cta {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.cta h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+/* ========================================
+   MODAL STYLES
+======================================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  padding-top: 100px;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  margin: auto;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+  color: #ff4b5c;
+}
+
+/* ========================================
+   INPUT FIELDS
+======================================== */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* ========================================
+   PROGRESS PAGE (progress.html) - CIRCULAR
+======================================== */
+.circular-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+}
+
+.circular-progress svg {
+  transform: rotate(-90deg);
+  width: 120px;
+  height: 120px;
+}
+
+.circular-progress circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.circular-progress circle.bg {
+  stroke: #eee;
+}
+
+.circular-progress circle.progress {
+  stroke: #28a745;
+  stroke-dasharray: 314; /* 2*PI*50 */
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 2s ease;
+}
+
+.circular-progress .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* ========================================
+   PROGRESS RECTANGULAR BARS
+======================================== */
+.progress-bar {
+  background: #ddd;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 12px 0;
+  height: 22px;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #28a745, #7be05a);
+  height: 22px;
+  width: 0;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+  line-height: 22px;
+  font-size: 12px;
+  transition: width 2s ease-in-out;
+}
+
+/* ========================================
+   IFRAME
+======================================== */
+iframe {
+  width: 100%;
+  height: 320px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+   RECOMMENDED COURSES & QUOTES
+======================================== */
+.recommended {
+  margin-top: 40px;
+}
+
+.recommended h3 {
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.recommended-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.quotes {
+  margin-top: 40px;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: white;
+  padding: 25px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 18px;
+  font-style: italic;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.quotes:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ========================================
+   PROGRESS BUTTON
+======================================== */
+.progress-btn {
+  padding: 8px 16px;
+  background: #28a745;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.progress-btn:hover {
+  background: #1e7e34;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* ========================================
+   MEDIA QUERIES
+======================================== */
+@media (max-width: 768px) {
+  .features, .recommended-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .course-card, .card {
+    width: 90%;
+  }
+}
