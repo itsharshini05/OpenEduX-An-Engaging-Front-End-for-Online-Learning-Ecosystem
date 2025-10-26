@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f7fb; margin: 0; }
+    .container { width: 50%; margin: 50px auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+    .step { display: none; }
+    .step.active { display: block; }
+    .progress { height: 10px; background: #ddd; border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+    .progress-bar { height: 10px; background: #4caf50; width: 0%; transition: 0.3s; }
+    button { background: #4caf50; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Course Registration</h2>
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+
+    <form id="regForm">
+      <!-- Step 1 -->
+      <div class="step active">
+        <h3>Step 1: Personal Info</h3>
+        <input type="text" placeholder="Full Name" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <input type="tel" placeholder="Phone Number" required>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <h3>Step 2: Education</h3>
+        <input type="text" placeholder="College/University"><br><br>
+        <input type="text" placeholder="Year of Study"><br><br>
+        <input type="text" placeholder="Skills (e.g. Python, ML)">
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <h3>Step 3: Confirm & Proceed</h3>
+        <p>Review your details and proceed to payment.</p>
+      </div>
+
+      <button type="button" onclick="nextStep()">Next</button>
+    </form>
+  </div>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+const progress = document.getElementById("progress");
+
+function nextStep() {
+  if (currentStep < steps.length - 1) {
+    steps[currentStep].classList.remove("active");
+    currentStep++;
+    steps[currentStep].classList.add("active");
+    progress.style.width = ((currentStep+1)/steps.length)*100 + "%";
+  } else {
+    window.location.href = "payment.html";
+  }
+}
+</script>
+</body>
+</html>
